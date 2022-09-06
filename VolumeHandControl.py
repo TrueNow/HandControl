@@ -30,7 +30,7 @@ while True:
     success, img = cap.read()
     img = detector.findHands(img)
     lmList = detector.findPosition(img, draw=False)
-    print(lmList)
+
     if len(lmList[0]) != 0:
         x1, y1 = lmList[0][4][1], lmList[0][4][2]
         x2, y2 = lmList[0][8][1], lmList[0][8][2]
@@ -43,7 +43,6 @@ while True:
         cv2.circle(img, (cx, cy), 15, (255, 0, 255), cv2.FILLED)
 
         length = math.hypot(x2 - x1, y2 - y1)
-        print(length)
 
         # Hand range 20 - 220
         # Volume range -65 - 0

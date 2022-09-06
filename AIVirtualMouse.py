@@ -46,7 +46,6 @@ while True:
             clocY = plocY + (y3 - plocY) / smoothening
 
             # 7. Move Mouse
-            # print(clocX, clocY)
             pyautogui.moveTo(wScreen - clocX, hScreen - clocY)
             cv2.circle(img, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
             plocX, plocY = clocX, clocY
@@ -54,12 +53,11 @@ while True:
             # 8. Both Index and middle fingers are up : Clicking Mode
         if fingers[1] == 1 and fingers[2] == 1:
             # 9. Find distance between fingers
-            # length, img, lineInfo = detector.findDistance(8, 12, img)
-            # print(length)
+            length, img, lineInfo = detector.findDistance(8, 12, img)
 
             # 10. Click mouse if distance short
-            # if length < 25:
-            #     cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0, 255, 0), cv2.FILLED)
+            if length < 25:
+                cv2.circle(img, (lineInfo[4], lineInfo[5]), 15, (0, 255, 0), cv2.FILLED)
             pyautogui.click()
 
     # 11. Frame Rate
